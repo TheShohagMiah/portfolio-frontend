@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FiGithub,
@@ -8,6 +8,30 @@ import {
   FiMaximize2,
 } from "react-icons/fi";
 import useBodyScrollLock from "../../hooks/useBodyScrollLock ";
+
+// ═══════════════════════════════════════════════════════════════
+//  STRIP HTML — plain text for card preview
+// ═══════════════════════════════════════════════════════════════
+const stripHtml = (html = "") =>
+  html
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+// ═══════════════════════════════════════════════════════════════
+//  DETECT TOUCH DEVICE
+// ═══════════════════════════════════════════════════════════════
+const useIsTouchDevice = () => {
+  const [isTouch, setIsTouch] = useState(false);
+  useEffect(() => {
+    setIsTouch(
+      "ontouchstart" in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia("(hover: none)").matches,
+    );
+  }, []);
+  return isTouch;
+};
 
 // ═══════════════════════════════════════════════════════════════
 //  MOTION VARIANTS
@@ -104,7 +128,7 @@ const DescriptionModal = ({ project, onClose }) => {
               {title}
             </h3>
             <div
-              className="text-muted-foreground text-sm leading-relaxed prose prose-sm dark:prose-invert"
+              className="rich-text text-sm text-muted-foreground"
               dangerouslySetInnerHTML={{ __html: description }}
             />
           </div>
@@ -150,6 +174,11 @@ const DescriptionModal = ({ project, onClose }) => {
 const ProjectCard = ({ project, index }) => {
   const [showModal, setShowModal] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const isTouch = useIsTouchDevice();
+
+  // ✅ On touch devices, always show the panel
+  const isOpen = isTouch ? true : hovered;
+
   const {
     image,
     title,
@@ -170,8 +199,8 @@ const ProjectCard = ({ project, index }) => {
         initial="hidden"
         animate="visible"
         exit="exit"
-        onHoverStart={() => setHovered(true)}
-        onHoverEnd={() => setHovered(false)}
+        onHoverStart={() => !isTouch && setHovered(true)}
+        onHoverEnd={() => !isTouch && setHovered(false)}
         className="group relative rounded-3xl overflow-hidden cursor-default border border-border hover:border-brand transition-colors duration-500 aspect-[4/5]"
       >
         {/* Background Image */}
@@ -181,7 +210,7 @@ const ProjectCard = ({ project, index }) => {
               src={image.url}
               alt={title}
               className="w-full h-full object-cover"
-              animate={{ scale: hovered ? 1.08 : 1 }}
+              animate={{ scale: hovered && !isTouch ? 1.08 : 1 }}
               transition={{ duration: 0.6 }}
             />
           ) : (
@@ -189,7 +218,6 @@ const ProjectCard = ({ project, index }) => {
               <FiCode size={48} className="text-muted-foreground/20" />
             </div>
           )}
-          {/* Gradient overlay using background color token */}
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
         </div>
 
@@ -205,10 +233,10 @@ const ProjectCard = ({ project, index }) => {
           )}
         </div>
 
-        {/* Glass Content Panel */}
+        {/* ✅ Glass Content Panel — always visible on touch, hover on desktop */}
         <motion.div
           className="absolute inset-x-0 bottom-0 z-10 p-3"
-          animate={{ y: hovered ? 0 : 55 }}
+          animate={{ y: isOpen ? 0 : 55 }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="rounded-2xl border border-border bg-card/70 backdrop-blur-xl p-5 shadow-brand">
@@ -216,17 +244,17 @@ const ProjectCard = ({ project, index }) => {
               {title}
             </h3>
 
+            {/* ✅ Description — always visible on touch */}
             <motion.div
               animate={{
-                opacity: hovered ? 1 : 0,
-                height: hovered ? "auto" : 0,
+                opacity: isOpen ? 1 : 0,
+                height: isOpen ? "auto" : 0,
               }}
               className="overflow-hidden mb-3"
             >
-              <div
-                className="text-muted-foreground text-xs line-clamp-2"
-                dangerouslySetInnerHTML={{ __html: description }}
-              />
+              <p className="text-muted-foreground text-xs line-clamp-2 leading-relaxed">
+                {stripHtml(description)}
+              </p>
             </motion.div>
 
             <div className="flex flex-wrap gap-1.5 mb-4">
