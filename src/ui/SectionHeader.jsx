@@ -13,7 +13,7 @@ const SectionHeader = ({ label, title, accent, children, index }) => {
       >
         {/* Label Row */}
         <div className="relative flex items-center gap-3 mb-5">
-          <span className="absolute top-0 left-0 -translate-y-1/2 text-6xl font-black text-foreground opacity-[0.20] tracking-tighter select-none pointer-events-none">
+          <span className="absolute top-1/2 left-0 -translate-y-1/2 text-6xl font-black text-foreground opacity-[0.20] tracking-tighter select-none pointer-events-none">
             {index}
           </span>
           <motion.span
