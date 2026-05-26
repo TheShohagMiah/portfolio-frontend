@@ -169,10 +169,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  button {
-    @apply relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-2.5 rounded uppercase font-medium text-xs text-foreground border border-border bg-secondary/40 backdrop-blur-xl transition-all duration-300;
-    /* position: relative added so ::before/::after pseudo-elements on .btn are contained */
-  }
+  
 }
 
 /* ══════════════════════════════════════════
