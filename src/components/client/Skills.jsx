@@ -116,11 +116,11 @@ const CATEGORIES = [
 // ═══════════════════════════════════════════════════════════════
 const PillSkeleton = ({ i }) => (
   <div
-    className="flex items-center gap-3 p-3.5 rounded-2xl border border-border bg-card animate-pulse"
+    className="flex items-center gap-3 p-3.5 rounded-lg border border-border bg-card animate-pulse"
     style={{ animationDelay: `${i * 0.07}s` }}
   >
-    <div className="w-8 h-8 rounded-xl bg-muted flex-shrink-0" />
-    <div className="h-2.5 bg-muted rounded-full flex-1" />
+    <div className="w-8 h-8 rounded-md bg-muted flex-shrink-0" />
+    <div className="h-2.5 bg-muted rounded-lg flex-1" />
   </div>
 );
 
@@ -140,7 +140,7 @@ const SkillPill = ({ skill, index }) => {
         ease: [0.22, 1, 0.36, 1],
       }}
       whileHover={{ y: -4, scale: 1.04 }}
-      className="group flex items-center gap-3 p-3.5 rounded-2xl border border-border bg-card
+      className="group flex items-center gap-3 p-3.5 rounded-lg border border-border bg-card
         cursor-default transition-all duration-200 relative overflow-hidden"
       onMouseEnter={(e) => {
         e.currentTarget.style.borderColor = `color-mix(in oklch, ${skill.color} 50%, transparent)`;
