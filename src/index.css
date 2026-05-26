@@ -48,10 +48,13 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* ── Brand token ── */
+  /* ── Brand tokens (all variants registered for Tailwind resolution) ── */
   --color-brand:            var(--brand);
   --color-brand-foreground: var(--brand-foreground);
   --color-brand-muted:      var(--brand-muted);
+  --color-brand-border:     var(--brand-border);
+  --color-brand-glow:       var(--brand-glow);
+  --color-brand-soft:       var(--brand-soft);
 }
 
 /* ══════════════════════════════════════════
@@ -93,13 +96,13 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  /* ── Brand — light mode (hue 247.721) ── */
-  --brand:            #471ea7 ;         /* base brand #006aef */
-  --brand-foreground: oklch(1 0 0);                           /* white on brand bg */
-  --brand-muted:      oklch(57.503% 0.15226 247.721 / 0.10); /* subtle tint bg */
-  --brand-border:     oklch(57.503% 0.15226 247.721 / 0.25); /* border tint */
-  --brand-glow:       oklch(57.503% 0.15226 247.721 / 0.18); /* shadow glow */
-  --brand-soft:       oklch(65% 0.13 247.721);               /* lighter for readable text */
+  /* ── Brand — light mode ── */
+  --brand:            #471ea7;
+  --brand-foreground: oklch(1 0 0);
+  --brand-muted:      oklch(57.503% 0.15226 247.721 / 0.10);
+  --brand-border:     oklch(57.503% 0.15226 247.721 / 0.25);
+  --brand-glow:       oklch(57.503% 0.15226 247.721 / 0.18);
+  --brand-soft:       oklch(65% 0.13 247.721);
 }
 
 /* ══════════════════════════════════════════
@@ -142,13 +145,13 @@
   /* ── Logo Background - Dark Mode ── */
   --logo: linear-gradient(135deg, #022c22, #047c5c);
 
-  /* ── Brand — dark mode (hue 247.721, brightened for dark bg) ── */
-  --brand:            oklch(55.779% 0.21664 259.05);               /* brighter so it pops on dark */
+  /* ── Brand — dark mode ── */
+  --brand:            oklch(55.779% 0.21664 259.05);
   --brand-foreground: oklch(1 0 0);
   --brand-muted:      oklch(68% 0.15 247.721 / 0.14);
   --brand-border:     oklch(68% 0.15 247.721 / 0.30);
   --brand-glow:       oklch(68% 0.15 247.721 / 0.24);
-  --brand-soft:       oklch(76% 0.12 247.721);               /* even lighter for dark text use */
+  --brand-soft:       oklch(76% 0.12 247.721);
 }
 
 /* ══════════════════════════════════════════
@@ -161,14 +164,14 @@
   body {
     @apply bg-background text-foreground;
     font-family: "Space Mono", monospace;
-    font-optical-sizing: auto;
     font-feature-settings: 'cv11', 'ss01';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  button{
-    @apply w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-2.5 rounded uppercase font-medium text-xs text-foreground border border-border bg-secondary/40 backdrop-blur-xl transition-all duration-300
+  button {
+    @apply relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-2.5 rounded uppercase font-medium text-xs text-foreground border border-border bg-secondary/40 backdrop-blur-xl transition-all duration-300;
+    /* position: relative added so ::before/::after pseudo-elements on .btn are contained */
   }
 }
 
@@ -196,6 +199,7 @@
    BUTTON GLOW ANIMATIONS
 ══════════════════════════════════════════ */
 .btn {
+  position: relative; /* required for ::before/::after positioning */
   --angle: 0deg;
   --glow-color: hsl(173, 24%, 79%);
   --glow-size: 2px;
@@ -203,6 +207,7 @@
 }
 
 .btn_download {
+  position: relative; /* required for ::before/::after positioning */
   --angle: 0deg;
   --glow-color: #00c3f4;
   --glow-size: 2px;
@@ -248,9 +253,10 @@
   to   { --angle: 360deg; }
 }
 
-.bio{
- font-family: "Fira Code", monospace;;
+.bio {
+  font-family: "Fira Code", monospace;
 }
+
 /* ══════════════════════════════════════════
    RICH TEXT — Frontend display styles
    !important needed to override Tailwind v4
@@ -323,14 +329,15 @@
   font-size: 0.8rem !important;
   padding: 0.1rem 0.35rem !important;
   border-radius: 4px !important;
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: var(--muted) !important; /* fixed: was rgba(255,255,255,0.08) — invisible in light mode */
+  color: var(--muted-foreground) !important;
 }
 .rich-text pre {
   overflow-x: auto !important;
   white-space: pre-wrap !important;
   word-break: break-word !important;
   max-width: 100% !important;
-  background: rgba(255, 255, 255, 0.05) !important;
+  background: var(--muted) !important; /* fixed: was rgba(255,255,255,0.05) — invisible in light mode */
   padding: 1rem !important;
   border-radius: 0.75rem !important;
   margin-bottom: 0.875rem !important;
