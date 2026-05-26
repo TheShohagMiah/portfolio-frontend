@@ -115,7 +115,7 @@ const DescriptionModal = ({ project, onClose }) => {
 
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-xl bg-background/70 backdrop-blur-md border border-border text-muted-foreground hover:text-destructive transition-all"
+            className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded bg-background/70 backdrop-blur-md border border-border text-muted-foreground hover:text-destructive transition-all"
           >
             <FiX size={13} />
           </button>
@@ -272,20 +272,20 @@ const ProjectCard = ({ project, index }) => {
               <motion.a
                 href={githubRepo}
                 target="_blank"
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest bg-secondary border border-border text-foreground hover:bg-muted transition-all"
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded text-[10px] font-black uppercase tracking-widest bg-secondary border border-border text-foreground hover:bg-muted transition-all"
               >
                 <FiGithub size={12} /> Code
               </motion.a>
               <motion.a
                 href={liveLink}
                 target="_blank"
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest bg-brand text-brand-fg transition-all"
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded text-[10px] font-black uppercase tracking-widest bg-brand text-brand-fg transition-all"
               >
                 <FiArrowUpRight size={12} /> Live
               </motion.a>
               <button
                 onClick={() => setShowModal(true)}
-                className="w-10 h-10 flex items-center justify-center rounded-xl bg-secondary border border-border text-foreground hover:border-brand transition-all"
+                className="w-10 h-10 flex items-center justify-center rounded bg-secondary border border-border text-foreground hover:border-brand transition-all"
               >
                 <FiMaximize2 size={13} />
               </button>
