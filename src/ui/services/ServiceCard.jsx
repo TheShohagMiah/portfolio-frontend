@@ -31,7 +31,7 @@ const ServiceCard = ({ service, delay = 0, tall = false, accent = false }) => {
       transition={{ type: "spring", stiffness: 260, damping: 22 }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
-      className={`group relative rounded-lg border overflow-hidden flex flex-col justify-between
+      className={`group relative rounded-md border overflow-hidden flex flex-col justify-between
         transition-all duration-300 cursor-default
         ${tall ? "min-h-[320px]" : "min-h-[240px]"} p-7`}
       style={{ background: "var(--card)", borderColor: "var(--border)" }}
