@@ -109,7 +109,7 @@ const DescriptionModal = ({ project, onClose }) => {
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
 
-          <div className="absolute top-4 left-4 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-[0.25em] backdrop-blur-md border border-brand bg-brand-muted text-brand-soft font-mono">
+          <div className="absolute top-4 left-4 px-3 py-1 rounded-md text-[9px] font-black uppercase tracking-[0.25em] backdrop-blur-md border border-brand bg-brand-muted text-brand-soft font-mono">
             {category ?? "Project"}
           </div>
 
@@ -201,7 +201,7 @@ const ProjectCard = ({ project, index }) => {
         exit="exit"
         onHoverStart={() => !isTouch && setHovered(true)}
         onHoverEnd={() => !isTouch && setHovered(false)}
-        className="group relative rounded-3xl overflow-hidden cursor-default border border-border hover:border-brand transition-colors duration-500 aspect-[4/5]"
+        className="group relative rounded-lg overflow-hidden cursor-default border border-border hover:border-brand transition-colors duration-500 aspect-[4/5]"
       >
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
@@ -223,11 +223,11 @@ const ProjectCard = ({ project, index }) => {
 
         {/* Pills */}
         <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-          <div className="px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-[0.25em] backdrop-blur-md border border-border bg-card/50 text-foreground font-mono">
+          <div className="px-3 py-1 rounded-md text-[9px] font-black uppercase tracking-[0.25em] backdrop-blur-md border border-border bg-card/50 text-foreground font-mono">
             {category ?? "Project"}
           </div>
           {featured && (
-            <div className="px-2.5 py-1 rounded-full text-[9px] font-bold uppercase tracking-wider backdrop-blur-md border border-amber-400/30 bg-amber-400/10 text-amber-400">
+            <div className="px-2.5 py-1 rounded-md text-[9px] font-bold uppercase tracking-wider backdrop-blur-md border border-amber-400/30 bg-amber-400/10 text-amber-400">
               ★ Featured
             </div>
           )}
@@ -239,7 +239,7 @@ const ProjectCard = ({ project, index }) => {
           animate={{ y: isOpen ? 0 : 55 }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="rounded-2xl border border-border bg-card/70 backdrop-blur-xl p-5 shadow-brand">
+          <div className="rounded-lg border border-border bg-card/70 backdrop-blur-xl p-5 shadow-brand">
             <h3 className="text-xl font-bold text-foreground leading-snug mb-2">
               {title}
             </h3>
