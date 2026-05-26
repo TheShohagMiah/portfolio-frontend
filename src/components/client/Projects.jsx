@@ -89,7 +89,7 @@ const Projects = () => {
 
           <div className="">
             <SectionHeader
-              label="Portfolio"
+              label="Featured works"
               index="03"
               children={
                 <motion.div
