@@ -94,7 +94,7 @@
   --sidebar-ring: oklch(0.708 0 0);
 
   /* ── Brand — light mode (hue 247.721) ── */
-  --brand:            #006aef;         /* base brand */
+  --brand:            #471ea7 ;         /* base brand #006aef */
   --brand-foreground: oklch(1 0 0);                           /* white on brand bg */
   --brand-muted:      oklch(57.503% 0.15226 247.721 / 0.10); /* subtle tint bg */
   --brand-border:     oklch(57.503% 0.15226 247.721 / 0.25); /* border tint */
