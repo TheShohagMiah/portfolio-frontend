@@ -92,7 +92,7 @@ const ContactCard = ({ item, index }) => (
       ease: [0.22, 1, 0.36, 1],
     }}
     whileHover={{ x: 6 }}
-    className="flex items-center gap-4 p-5 rounded-2xl border bg-card transition-all duration-200 group"
+    className="flex items-center gap-4 p-5 rounded-lg border bg-card transition-all duration-200 group"
     style={{ borderColor: "var(--border)" }}
     onMouseEnter={(e) => {
       e.currentTarget.style.borderColor = "var(--brand-border)";
@@ -107,7 +107,7 @@ const ContactCard = ({ item, index }) => (
   >
     {/* Icon */}
     <div
-      className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 border transition-all duration-300 group-hover:scale-110"
+      className="w-11 h-11 rounded-lg flex items-center justify-center shrink-0 border transition-all duration-300 group-hover:scale-110"
       style={{
         background: "var(--brand-muted)",
         borderColor: "var(--brand-border)",
