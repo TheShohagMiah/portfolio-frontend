@@ -272,14 +272,14 @@ const ProjectCard = ({ project, index }) => {
               <motion.a
                 href={githubRepo}
                 target="_blank"
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded text-[10px] font-black uppercase tracking-widest bg-secondary border border-border text-foreground hover:bg-muted transition-all"
+                className="flex-1 flex items-center justify-center gap-2 py-1.5 rounded text-[10px] font-black uppercase tracking-widest bg-secondary border border-border text-foreground hover:bg-muted transition-all"
               >
                 <FiGithub size={12} /> Code
               </motion.a>
               <motion.a
                 href={liveLink}
                 target="_blank"
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 rounded text-[10px] font-black uppercase tracking-widest bg-brand text-brand-fg transition-all"
+                className="flex-1 flex items-center justify-center gap-2 py-1.5 rounded text-[10px] font-black uppercase tracking-widest bg-brand text-brand-fg transition-all"
               >
                 <FiArrowUpRight size={12} /> Live
               </motion.a>
