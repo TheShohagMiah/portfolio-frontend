@@ -168,7 +168,7 @@ const Hero = () => {
             href={heroData.ctaLink}
             whileHover="hover"
             whileTap={{ scale: 0.97 }}
-            className="group relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-2.5 rounded uppercase font-medium text-sm overflow-hidden shadow-xl transition-shadow"
+            className="group relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-2.5 rounded uppercase font-medium text-xs overflow-hidden shadow-xl transition-shadow"
             style={{
               background: "var(--brand)",
               color: "var(--brand-foreground, #fff)",
@@ -204,7 +204,7 @@ const Hero = () => {
             rel="noreferrer"
             whileHover="hover"
             whileTap={{ scale: 0.97 }}
-            className="group relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-2.5 rounded uppercase font-medium text-sm text-foreground border border-border bg-secondary/40 backdrop-blur-xl transition-all duration-300"
+            className="group relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-2.5 rounded uppercase font-medium text-xs text-foreground border border-border bg-secondary/40 backdrop-blur-xl transition-all duration-300"
             onMouseEnter={(e) => {
               e.currentTarget.style.borderColor = "var(--brand-border)";
               e.currentTarget.style.background = "var(--brand-muted)";
