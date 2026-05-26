@@ -10,11 +10,11 @@ const SectionHeader = ({ label, title, accent, children, index }) => {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <span className="text-xs font-mono uppercase tracking-[0.2em] text-brand opacity-60 block mb-3">
+        <span className="text-lg font-extrabold uppercase tracking-[0.2em] text-brand opacity-60 block mb-3">
           {index && <span className="mr-2 opacity-50">{index}</span>}
           {label}
         </span>
-        <h2 className="text-2xl md:text-3xl font-light tracking-tight text-foreground leading-snug">
+        <h2 className="text-2xl md:text-3xl font-black tracking-tight text-foreground leading-snug">
           {title}
           {accent && (
             <span className="text-brand"> {accent}</span>
