@@ -23,7 +23,7 @@ const SectionHeader = ({ label, title, accent, children, index }) => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="block h-1 w-10 origin-left bg-brand rounded-full"
           />
-          <span className="text-[11px] font-black uppercase tracking-[0.3em] font-mono text-brand">
+          <span className="text-xl font-black uppercase tracking-[0.3em] font-mono text-brand">
             {label}
           </span>
         </div>
