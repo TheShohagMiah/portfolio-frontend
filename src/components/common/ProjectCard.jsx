@@ -149,7 +149,7 @@ const DescriptionModal = ({ project, onClose }) => {
               whileTap={{ scale: 0.97 }}
               href={githubRepo}
               target="_blank"
-              className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl border border-border bg-secondary hover:bg-muted text-sm font-bold text-foreground transition-all"
+              className="flex-1 flex items-center justify-center gap-2 py-2 rounded border border-border bg-secondary hover:bg-muted text-sm font-bold text-foreground transition-all"
             >
               <FiGithub size={14} /> View Code
             </motion.a>
@@ -157,7 +157,7 @@ const DescriptionModal = ({ project, onClose }) => {
               whileTap={{ scale: 0.97 }}
               href={liveLink}
               target="_blank"
-              className="flex-1 flex items-center justify-center gap-2 py-3 rounded-xl bg-brand text-brand-fg text-sm font-bold shadow-brand transition-all hover:opacity-90"
+              className="flex-1 flex items-center justify-center gap-2 py-2 rounded bg-brand text-brand-fg text-sm font-bold shadow-brand transition-all hover:opacity-90"
             >
               <FiArrowUpRight size={14} /> Live Demo
             </motion.a>
