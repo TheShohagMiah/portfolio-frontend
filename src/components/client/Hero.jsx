@@ -168,7 +168,7 @@ const Hero = () => {
             href={heroData.ctaLink}
             whileHover="hover"
             whileTap={{ scale: 0.97 }}
-            className="group relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-black text-sm overflow-hidden shadow-xl transition-shadow"
+            className="group relative w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-2 rounded-md font-black text-sm overflow-hidden shadow-xl transition-shadow"
             style={{
               background: "var(--brand)",
               color: "var(--brand-foreground, #fff)",
