@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const StatCard = ({ label, value, unit, icon: Icon }) => {
-  const [timestamp, setTimestamp] = useState("LATEST");
+  const [timestamp, setTimestamp] = useState("LIVE");
 
-  // Passive timestamp simulation
   useEffect(() => {
     const times = ["3S AGO", "LIVE", "SYNCED", "JUST NOW"];
     const interval = setInterval(() => {
@@ -15,90 +14,57 @@ const StatCard = ({ label, value, unit, icon: Icon }) => {
 
   return (
     <motion.div
-      initial="hidden"
-      whileInView="visible"
-      whileHover="hover"
+      initial={{ opacity: 0, y: 16 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
-        hover: { y: -8, transition: { duration: 0.4, ease: "easeOut" } },
+      transition={{ duration: 0.5 }}
+      whileHover={{ y: -4, transition: { duration: 0.3, ease: "easeOut" } }}
+      className="group relative flex flex-col items-center text-center p-6 rounded-xl border border-border bg-card transition-colors duration-300"
+      style={{
+        borderColor: "var(--border)",
       }}
-      className="group relative p-[1.5px] rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-brand"
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = "var(--brand-border)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = "var(--border)";
+      }}
     >
-      {/* ══ HOVER-ONLY EXCLUSIVE: The Spinning Border Logic ══ */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 btn_download" />
-
-      {/* ══ MAIN BODY ══ */}
-      <div className="relative h-full flex flex-col items-center text-center p-4 rounded-[23px] bg-card border border-border group-hover:border-transparent transition-all duration-500 overflow-hidden">
-        {/* Vector Grid Backdrop - Brightens on Hover */}
-        <svg
-          className="absolute inset-0 w-full h-full opacity-[0.03] group-hover:opacity-[0.08] text-brand transition-opacity duration-500"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern
-              id="grid-stat"
-              width="15"
-              height="15"
-              patternUnits="userSpaceOnUse"
-            >
-              <path
-                d="M 15 0 L 0 0 0 15"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="0.5"
-              />
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#grid-stat)" />
-        </svg>
+      {/* Icon */}
+      <div
+        className="w-10 h-10 rounded-lg flex items-center justify-center border mb-5 transition-all duration-300"
+        style={{ borderColor: "var(--border)", color: "var(--muted-foreground)" }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = "var(--brand)";
+          e.currentTarget.style.color = "#fff";
+          e.currentTarget.style.borderColor = "var(--brand)";
+        }}
+      >
+        <Icon size={16} />
       </div>
 
-      {/* Icon with Passive + Hover Animation */}
-      <div className="relative mb-4">
-        <div className="relative z-10 w-12 h-12 rounded-2xl flex items-center justify-center border border-border bg-secondary/30 group-hover:bg-brand group-hover:text-white transition-all duration-500 shadow-sm">
-          <Icon size={18} />
-        </div>
-
-        {/* Passive Sonar Rings (Always active) */}
-        <motion.div
-          animate={{ scale: [1, 2], opacity: [0.3, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: "easeOut" }}
-          className="absolute inset-0 rounded-2xl border border-brand/30"
-        />
-        {/* Hover-Specific Glow Pulse */}
-        <motion.div
-          variants={{ hover: { scale: 2.5, opacity: 0.15 } }}
-          className="absolute inset-0 rounded-full bg-brand blur-xl opacity-0 transition-all duration-500"
-        />
-      </div>
-
-      {/* Value Section */}
-      <div className="relative z-10 space-y-1">
-        <h4 className="text-lg capitalize font-black tracking-tighter text-foreground group-hover:text-brand transition-colors duration-500">
-          {value}
-        </h4>
+      {/* Value */}
+      <p
+        className="text-2xl font-bold tabular-nums tracking-tight leading-none mb-1 transition-colors duration-300 group-hover:text-brand"
+        style={{ color: "var(--foreground)" }}
+      >
+        {value}
         {unit && (
-          <span className="block text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-muted-foreground group-hover:text-brand-soft">
+          <span className="text-xs font-mono font-normal text-muted-foreground ml-1">
             {unit}
           </span>
         )}
-      </div>
+      </p>
 
-      {/* Bottom Label Section */}
-      <div className="mt-auto pt-4 w-full relative z-10">
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent mb-3" />
-        <p className="text-[9px] font-black uppercase tracking-[0.4em] text-muted-foreground/40 group-hover:text-foreground transition-colors">
-          {label}
-        </p>
-      </div>
+      {/* Label */}
+      <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-muted-foreground mt-3">
+        {label}
+      </p>
 
-      {/* The "Bottom Eclipse" Light - Moves up on hover */}
-      <motion.div
-        variants={{ hover: { y: -20, opacity: 0.4 } }}
-        className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-32 h-12 bg-brand rounded-full blur-[35px] opacity-20 transition-all duration-700"
-      />
+      {/* Timestamp */}
+      <span className="mt-4 text-[9px] font-mono uppercase tracking-widest text-muted-foreground/40">
+        {timestamp}
+      </span>
     </motion.div>
   );
 };
