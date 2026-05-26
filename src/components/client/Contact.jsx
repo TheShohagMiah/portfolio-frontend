@@ -41,7 +41,7 @@ const FALLBACK_ITEMS = [
 // ═══════════════════════════════════════════════════════════════
 const inputCls = (isFocused, hasError) =>
   [
-    "w-full bg-secondary/40 border rounded-2xl px-5 py-3.5 text-sm text-foreground font-medium",
+    "w-full bg-secondary/40 border rounded-lg px-5 py-3.5 text-sm text-foreground font-medium",
     "placeholder:text-muted-foreground/40 outline-none transition-all duration-200",
     hasError
       ? "border-red-500/60 shadow-[0_0_0_3px_rgba(239,68,68,0.08)]"
@@ -240,11 +240,11 @@ const Contact = () => {
       <motion.div
         animate={{ scale: [1, 1.1, 1], opacity: [0.06, 0.11, 0.06] }}
         transition={{ duration: 8, repeat: Infinity }}
-        className="absolute top-0 right-0 w-[450px] h-[450px] rounded-full blur-[110px] pointer-events-none -z-10"
+        className="absolute top-0 right-0 w-[450px] h-[450px] rounded-lg blur-[110px] pointer-events-none -z-10"
         style={{ background: "var(--brand)" }}
       />
       <div
-        className="absolute bottom-0 -left-20 w-[350px] h-[350px] rounded-full blur-[100px] opacity-[0.04] pointer-events-none -z-10"
+        className="absolute bottom-0 -left-20 w-[350px] h-[350px] rounded-lg blur-[100px] opacity-[0.04] pointer-events-none -z-10"
         style={{ background: "var(--brand)" }}
       />
 
@@ -276,7 +276,7 @@ const Contact = () => {
               />
               {/* Inner glow */}
               <div
-                className="absolute -top-20 -right-20 w-60 h-60 rounded-full blur-[80px] opacity-[0.07] pointer-events-none"
+                className="absolute -top-20 -right-20 w-60 h-60 rounded-lg blur-[80px] opacity-[0.07] pointer-events-none"
                 style={{ background: "var(--brand)" }}
               />
 
@@ -305,7 +305,7 @@ const Contact = () => {
                   <motion.span
                     animate={{ opacity: [1, 0.3, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                    className="w-1.5 h-1.5 rounded-lg flex-shrink-0"
                     style={{ background: "var(--chart-2)" }}
                   />
                   <span className="text-[9px] font-black uppercase tracking-widest font-mono text-muted-foreground/50">
@@ -404,7 +404,7 @@ const Contact = () => {
                       initial={{ opacity: 0, y: -6 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -6 }}
-                      className="flex items-center gap-3 bg-red-500/5 border border-red-500/20 rounded-2xl px-5 py-3"
+                      className="flex items-center gap-3 bg-red-500/5 border border-red-500/20 rounded-lg px-5 py-3"
                     >
                       <FiAlertCircle className="text-red-500 shrink-0 size-4" />
                       <p className="text-sm text-red-500 font-medium">
@@ -427,7 +427,7 @@ const Contact = () => {
                       !isSent && !isLoading ? { scale: 1.02, y: -1 } : {}
                     }
                     whileTap={!isSent && !isLoading ? { scale: 0.98 } : {}}
-                    className="relative flex items-center gap-3 px-8 py-3.5 rounded-2xl font-black text-[11px] tracking-widest font-mono overflow-hidden transition-all duration-300 disabled:cursor-not-allowed uppercase"
+                    className="relative flex items-center gap-3 px-8 py-3.5 rounded-lg font-black text-[11px] tracking-widest font-mono overflow-hidden transition-all duration-300 disabled:cursor-not-allowed uppercase"
                     style={{
                       background: isSent ? "#10b981" : "var(--brand)",
                       color: "var(--brand-foreground, #fff)",
@@ -475,7 +475,7 @@ const Contact = () => {
                               repeat: Infinity,
                               ease: "linear",
                             }}
-                            className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                            className="inline-block w-4 h-4 border-2 border-white/30 border-t-white rounded-lg"
                           />
                           Sending...
                         </motion.span>
@@ -530,11 +530,11 @@ const Contact = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3, duration: 0.55 }}
-                className="flex items-center gap-4 p-5 rounded-2xl border bg-card"
+                className="flex items-center gap-4 p-5 rounded-lg border bg-card"
                 style={{ borderColor: "var(--border)" }}
               >
                 <div
-                  className="w-11 h-11 rounded-2xl flex items-center justify-center shrink-0 border"
+                  className="w-11 h-11 rounded-lg flex items-center justify-center shrink-0 border"
                   style={{
                     background: "var(--brand-muted)",
                     borderColor: "var(--brand-border)",
@@ -555,7 +555,7 @@ const Contact = () => {
                   <motion.span
                     animate={{ opacity: [1, 0.3, 1] }}
                     transition={{ duration: 2, repeat: Infinity }}
-                    className="w-2 h-2 rounded-full"
+                    className="w-2 h-2 rounded-lg"
                     style={{ background: "var(--chart-2)" }}
                   />
                   <span className="text-[9px] font-black uppercase tracking-widest font-mono text-muted-foreground/40">
@@ -577,7 +577,7 @@ const Contact = () => {
                 }}
               >
                 {/* Decoratives */}
-                <div className="absolute bottom-0 left-0 w-40 h-40 rounded-full bg-white/10 blur-[40px] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-40 h-40 rounded-lg bg-white/10 blur-[40px] pointer-events-none" />
                 <FiMessageSquare
                   size={90}
                   className="absolute -bottom-3 -right-3 text-white opacity-[0.08]"
@@ -617,7 +617,7 @@ const Contact = () => {
                     rel="noreferrer"
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    className="flex items-center justify-center gap-2 py-3 rounded-2xl font-black text-[11px] uppercase tracking-widest font-mono transition-all duration-200"
+                    className="flex items-center justify-center gap-2 py-3 rounded-lg font-black text-[11px] uppercase tracking-widest font-mono transition-all duration-200"
                     style={{
                       background: "rgba(255,255,255,0.15)",
                       color: "#fff",
