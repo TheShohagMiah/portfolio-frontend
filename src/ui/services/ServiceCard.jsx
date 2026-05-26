@@ -11,11 +11,28 @@ const fadeUp = (delay = 0) => ({
   },
 });
 
+const hoverSpring = { type: "spring", stiffness: 260, damping: 22 };
+
 const ServiceCard = ({ service, delay = 0, tall = false, index = 1 }) => {
   const [hovered, setHovered] = useState(false);
 
   if (!service) return null;
   const Icon = service.icon;
+
+  const cardStyle = {
+    background: "var(--card)",
+    borderWidth: "1px",
+    borderStyle: "solid",
+    borderColor: hovered ? "var(--brand-border)" : "var(--border)",
+    boxShadow: hovered ? "0 16px 48px var(--brand-glow)" : "none",
+  };
+
+  const iconBoxStyle = {
+    background: hovered ? "var(--brand)" : "var(--brand-muted)",
+    borderColor: hovered ? "var(--brand)" : "var(--brand-border)",
+    color: hovered ? "#fff" : "var(--brand)",
+    boxShadow: hovered ? "0 4px 16px var(--brand-glow)" : "none",
+  };
 
   return (
     <motion.div
@@ -25,17 +42,14 @@ const ServiceCard = ({ service, delay = 0, tall = false, index = 1 }) => {
       viewport={{ once: true, margin: "-60px" }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
-      whileHover={{ y: -6, scale: 1.015, transition: { type: "spring", stiffness: 260, damping: 22 } }}
-      className={`group relative rounded-md overflow-hidden flex flex-col justify-between cursor-default
-        transition-colors duration-300
-        ${tall ? "min-h-[320px]" : "min-h-[240px]"} p-7`}
-      style={{
-        background: "var(--card)",
-        borderWidth: "1px",
-        borderStyle: "solid",
-        borderColor: hovered ? "var(--brand-border)" : "var(--border)",
-        boxShadow: hovered ? "0 16px 48px var(--brand-glow)" : "none",
-      }}
+      whileHover={{ y: -6, scale: 1.015, transition: hoverSpring }}
+      className={[
+        "group relative rounded-md overflow-hidden flex flex-col justify-between cursor-default",
+        "transition-colors duration-300",
+        tall ? "min-h-[320px]" : "min-h-[240px]",
+        "p-7",
+      ].join(" ")}
+      style={cardStyle}
     >
       {/* Top accent line */}
       <div
@@ -64,7 +78,7 @@ const ServiceCard = ({ service, delay = 0, tall = false, index = 1 }) => {
         <Icon size={100} />
       </motion.div>
 
-      {/* Number index — fades out on hover */}
+      {/* Number index */}
       <motion.span
         className="absolute top-6 right-6 text-[11px] font-black font-mono tabular-nums"
         animate={{ opacity: hovered ? 0 : 0.2, y: hovered ? -4 : 0 }}
@@ -74,13 +88,16 @@ const ServiceCard = ({ service, delay = 0, tall = false, index = 1 }) => {
         {String(index).padStart(2, "0")}
       </motion.span>
 
-      {/* Stat badge — slides in on hover */}
+      {/* Stat badge */}
       <motion.div
         className="absolute top-5 right-6 flex flex-col items-end"
         animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6, scale: hovered ? 1 : 0.9 }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       >
-        <span className="text-2xl font-black tabular-nums leading-none" style={{ color: "var(--brand)" }}>
+        <span
+          className="text-2xl font-black tabular-nums leading-none"
+          style={{ color: "var(--brand)" }}
+        >
           {service.stat}
         </span>
         <span className="text-[9px] font-black uppercase tracking-widest mt-0.5 text-muted-foreground/50 font-mono">
@@ -90,25 +107,22 @@ const ServiceCard = ({ service, delay = 0, tall = false, index = 1 }) => {
 
       {/* Top row: icon + arrow */}
       <div className="relative flex items-start justify-between">
-        {/* Icon box */}
         <div
           className="w-11 h-11 rounded-lg flex items-center justify-center border shrink-0 transition-all duration-300"
-          style={{
-            background: hovered ? "var(--brand)" : "var(--brand-muted)",
-            borderColor: hovered ? "var(--brand)" : "var(--brand-border)",
-            color: hovered ? "#fff" : "var(--brand)",
-            boxShadow: hovered ? "0 4px 16px var(--brand-glow)" : "none",
-          }}
+          style={iconBoxStyle}
         >
           <Icon size={18} />
         </div>
 
-        {/* Arrow */}
         <motion.div
           className="w-8 h-8 rounded-full flex items-center justify-center border"
           animate={{ opacity: hovered ? 1 : 0, x: hovered ? 0 : -4, y: hovered ? 0 : 4 }}
           transition={{ duration: 0.25 }}
-          style={{ borderColor: "var(--brand-border)", color: "var(--brand)", background: "var(--brand-muted)" }}
+          style={{
+            borderColor: "var(--brand-border)",
+            color: "var(--brand)",
+            background: "var(--brand-muted)",
+          }}
         >
           <FiArrowUpRight size={14} />
         </motion.div>
@@ -117,7 +131,10 @@ const ServiceCard = ({ service, delay = 0, tall = false, index = 1 }) => {
       {/* Content */}
       <div className="relative mt-auto space-y-3">
         <h3
-          className={`font-bold tracking-tight leading-tight transition-colors duration-200 ${tall ? "text-xl" : "text-lg"}`}
+          className={[
+            "font-bold tracking-tight leading-tight transition-colors duration-200",
+            tall ? "text-xl" : "text-lg",
+          ].join(" ")}
           style={{ color: hovered ? "var(--brand)" : "var(--foreground)" }}
         >
           {service.title}
@@ -127,7 +144,6 @@ const ServiceCard = ({ service, delay = 0, tall = false, index = 1 }) => {
           {service.description}
         </p>
 
-        {/* Tags */}
         <div className="flex flex-wrap gap-1.5 pt-1">
           {service.tags?.map((tag) => (
             <span
