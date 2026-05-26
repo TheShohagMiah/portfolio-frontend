@@ -53,53 +53,52 @@ const StatCard = ({ label, value, unit, icon: Icon }) => {
           </defs>
           <rect width="100%" height="100%" fill="url(#grid-stat)" />
         </svg>
+      </div>
+
+      {/* Icon with Passive + Hover Animation */}
+      <div className="relative mb-4">
+        <div className="relative z-10 w-12 h-12 rounded-2xl flex items-center justify-center border border-border bg-secondary/30 group-hover:bg-brand group-hover:text-white transition-all duration-500 shadow-sm">
+          <Icon size={18} />
         </div>
 
-        {/* Icon with Passive + Hover Animation */}
-        <div className="relative mb-4">
-          <div className="relative z-10 w-12 h-12 rounded-2xl flex items-center justify-center border border-border bg-secondary/30 group-hover:bg-brand group-hover:text-white transition-all duration-500 shadow-sm">
-            <Icon size={18} />
-          </div>
-
-          {/* Passive Sonar Rings (Always active) */}
-          <motion.div
-            animate={{ scale: [1, 2], opacity: [0.3, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeOut" }}
-            className="absolute inset-0 rounded-2xl border border-brand/30"
-          />
-          {/* Hover-Specific Glow Pulse */}
-          <motion.div
-            variants={{ hover: { scale: 2.5, opacity: 0.15 } }}
-            className="absolute inset-0 rounded-full bg-brand blur-xl opacity-0 transition-all duration-500"
-          />
-        </div>
-
-        {/* Value Section */}
-        <div className="relative z-10 space-y-1">
-          <h4 className="text-lg capitalize font-black tracking-tighter text-foreground group-hover:text-brand transition-colors duration-500">
-            {value}
-          </h4>
-          {unit && (
-            <span className="block text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-muted-foreground group-hover:text-brand-soft">
-              {unit}
-            </span>
-          )}
-        </div>
-
-        {/* Bottom Label Section */}
-        <div className="mt-auto pt-4 w-full relative z-10">
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent mb-3" />
-          <p className="text-[9px] font-black uppercase tracking-[0.4em] text-muted-foreground/40 group-hover:text-foreground transition-colors">
-            {label}
-          </p>
-        </div>
-
-        {/* The "Bottom Eclipse" Light - Moves up on hover */}
+        {/* Passive Sonar Rings (Always active) */}
         <motion.div
-          variants={{ hover: { y: -20, opacity: 0.4 } }}
-          className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-32 h-12 bg-brand rounded-full blur-[35px] opacity-20 transition-all duration-700"
+          animate={{ scale: [1, 2], opacity: [0.3, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeOut" }}
+          className="absolute inset-0 rounded-2xl border border-brand/30"
+        />
+        {/* Hover-Specific Glow Pulse */}
+        <motion.div
+          variants={{ hover: { scale: 2.5, opacity: 0.15 } }}
+          className="absolute inset-0 rounded-full bg-brand blur-xl opacity-0 transition-all duration-500"
         />
       </div>
+
+      {/* Value Section */}
+      <div className="relative z-10 space-y-1">
+        <h4 className="text-lg capitalize font-black tracking-tighter text-foreground group-hover:text-brand transition-colors duration-500">
+          {value}
+        </h4>
+        {unit && (
+          <span className="block text-[10px] font-mono font-bold uppercase tracking-[0.25em] text-muted-foreground group-hover:text-brand-soft">
+            {unit}
+          </span>
+        )}
+      </div>
+
+      {/* Bottom Label Section */}
+      <div className="mt-auto pt-4 w-full relative z-10">
+        <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent mb-3" />
+        <p className="text-[9px] font-black uppercase tracking-[0.4em] text-muted-foreground/40 group-hover:text-foreground transition-colors">
+          {label}
+        </p>
+      </div>
+
+      {/* The "Bottom Eclipse" Light - Moves up on hover */}
+      <motion.div
+        variants={{ hover: { y: -20, opacity: 0.4 } }}
+        className="absolute -bottom-12 left-1/2 -translate-x-1/2 w-32 h-12 bg-brand rounded-full blur-[35px] opacity-20 transition-all duration-700"
+      />
     </motion.div>
   );
 };
