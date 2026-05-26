@@ -53,22 +53,6 @@ const StatCard = ({ label, value, unit, icon: Icon }) => {
           </defs>
           <rect width="100%" height="100%" fill="url(#grid-stat)" />
         </svg>
-
-        {/* Top Data Header */}
-        <div className="relative z-10 w-full flex justify-between items-center mb-8">
-          <div className="flex items-center gap-2">
-            <motion.span
-              animate={{ scale: [1, 1.2, 1], opacity: [1, 0.5, 1] }}
-              transition={{ repeat: Infinity, duration: 2 }}
-              className="w-1.5 h-1.5 rounded-full bg-brand shadow-[0_0_8px_var(--brand)]"
-            />
-            <span className="text-[8px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">
-              Terminal.01
-            </span>
-          </div>
-          <span className="text-[8px] font-mono font-bold text-brand-soft opacity-40 group-hover:opacity-100 transition-opacity">
-            {timestamp}
-          </span>
         </div>
 
         {/* Icon with Passive + Hover Animation */}
