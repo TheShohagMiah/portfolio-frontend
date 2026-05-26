@@ -116,7 +116,7 @@ const ServiceCard = ({ service, delay = 0, tall = false, accent = false }) => {
       <div className="relative flex items-start justify-between">
         {/* Icon box */}
         <motion.div
-          className="w-11 h-11 rounded-2xl flex items-center justify-center border transition-all duration-300 shrink-0"
+          className="w-11 h-11 rounded-lg flex items-center justify-center border transition-all duration-300 shrink-0"
           animate={{
             background: hovered ? "var(--brand)" : "var(--brand-muted)",
             borderColor: hovered ? "var(--brand)" : "var(--brand-border)",
