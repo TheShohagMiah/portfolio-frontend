@@ -96,10 +96,10 @@
   /* ── Brand — light mode (hue 247.721) ── */
   --brand:            #471ea7 ;         /* base brand #006aef */
   --brand-foreground: oklch(1 0 0);                           /* white on brand bg */
-  --brand-muted:      oklch(57.503% 0.15226 247.721 / 0.10); /* subtle tint bg */
-  --brand-border:     oklch(57.503% 0.15226 247.721 / 0.25); /* border tint */
-  --brand-glow:       oklch(57.503% 0.15226 247.721 / 0.18); /* shadow glow */
-  --brand-soft:       oklch(65% 0.13 247.721);               /* lighter for readable text */
+  --brand-muted:      #471ea71a; /* subtle tint bg */
+  --brand-border:     #471ea740; /* border tint */
+  --brand-glow:       #471ea72e; /* shadow glow */
+  --brand-soft:       #471ea7;  
 }
 
 /* ══════════════════════════════════════════
