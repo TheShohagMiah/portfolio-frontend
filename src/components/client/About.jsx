@@ -125,7 +125,7 @@ const About = () => {
               {/* My Story badge */}
               <motion.div
                 whileHover={{ scale: 1.04, x: 4 }}
-                className="inline-flex items-center bg-violet-300 gap-2.5 px-4 py-2 rounded-full border text-sm font-bold w-fit"
+                className="inline-flex items-center bg-brand/30 border-border-brand gap-2.5 px-4 py-2 rounded-full border text-sm font-bold w-fit"
                 
               >
                 <FiUser size={14} />
