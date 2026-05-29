@@ -127,7 +127,7 @@ const About = () => {
                 whileHover={{ scale: 1.04, x: 4 }}
                 className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border text-sm font-bold w-fit"
                 style={{
-                  background: "var(--brand-muted)",
+                  background: "var(--brand)",
                   borderColor: "var(--brand-border)",
                   color: "var(--brand-soft, var(--brand))",
                 }}
