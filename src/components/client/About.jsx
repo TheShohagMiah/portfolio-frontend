@@ -124,13 +124,17 @@ const About = () => {
             >
               {/* My Story badge */}
               <motion.div
-                whileHover={{ scale: 1.04, x: 4 }}
-                className="inline-flex items-center bg-brand/30 border-border-brand gap-2.5 px-4 py-2 rounded-full border text-sm font-bold w-fit"
-                
-              >
-                <FiUser size={14} />
-                <span>My Story</span>
-              </motion.div>
+  whileHover={{ scale: 1.04, x: 4 }}
+  className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border text-sm font-bold w-fit"
+  style={{
+    background: "var(--brand-muted)",
+    borderColor: "var(--brand-border)",
+    color: "var(--brand-soft, var(--brand))",
+  }}
+>
+  <FiUser size={14} />
+  <span>My Story</span>
+</motion.div>
 
               {/* Sub-heading */}
               <h3 className="text-3xl font-bold leading-tight text-foreground">
